@@ -8,26 +8,20 @@ public class JoystickF310 extends Joystick {
     
 	public JoystickF310(int joystickNumber) { super(joystickNumber); }
 
-	public JoystickButton getButton(ButtonF310 button) {
+	public JoystickButton getJoystickButton(ButtonF310 button) {
 		return new JoystickButton(this, button.ordinal());
 	}
 
-	public POVButton getButton(POVF310 button) {
-		return new POVButton(this, button.get());
+	public POVButton getPOVButton(POVF310 button) {
+		return new POVButton(this, button.ordinal() * 45);
 	}
 
-	public double getAxis(AxisF310 axis) {
+	public double getRawAxis(AxisF310 axis) {
 		return this.getRawAxis(axis.ordinal());
 	}
 
 	public static enum POVF310 {
-		Top(0), TopRight(45), Right(90), BottomRight(135), Bottom(180), BottomLeft(225), Left(270), TopLeft(315);
-
-		private int angle;
-    
-        POVF310(int angle) { this.angle = angle; }
-    
-        public int get() { return angle; }
+		Top, TopRight, Right, BottomRight, Bottom, BottomLeft, Left, TopLeft
 	}
 
 	public static enum ButtonF310 {
