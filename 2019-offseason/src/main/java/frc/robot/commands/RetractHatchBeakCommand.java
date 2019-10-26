@@ -11,4 +11,9 @@ public class RetractHatchBeakCommand extends CommandBase {
         m_hatch = hatch;
         addRequirements(hatch);
     }
+
+    @Override
+    public void initialize() {
+        m_hatch.setClosed(false);
+    }
 }

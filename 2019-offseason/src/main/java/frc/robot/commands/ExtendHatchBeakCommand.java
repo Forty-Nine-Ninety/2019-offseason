@@ -11,4 +11,9 @@ public class ExtendHatchBeakCommand extends CommandBase {
         m_hatch = hatch;
         addRequirements(hatch);
     }
+
+    @Override
+    public void initialize() {
+        m_hatch.setClosed(true);
+    }
 }
