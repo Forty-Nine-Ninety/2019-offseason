@@ -9,8 +9,8 @@ public class ClimbSubsystem extends SubsystemBase {
     private final Solenoid solenoid;
     private boolean isExtended;
 
-    public ClimbSubsystem(int pcmChannel) {
-        solenoid = new Solenoid(Constants.CAN_PCM, pcmChannel);
+    public ClimbSubsystem(Side location) {
+        solenoid = new Solenoid(Constants.CAN_PCM, (location == Side.Front) ? Constants.PORT_PCM_CLIMB_FRONT : Constants.PORT_PCM_CLIMB_REAR);
         isExtended = false;
         solenoid.set(isExtended);
     }
@@ -26,4 +26,6 @@ public class ClimbSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {}
+
+    public enum Side { Front, Rear }
 }
