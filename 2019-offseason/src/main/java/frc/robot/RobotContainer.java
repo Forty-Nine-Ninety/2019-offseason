@@ -1,21 +1,8 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.JoystickF310.ButtonF310;
-import frc.robot.JoystickF310.POVF310;
-import frc.robot.commands.ExtendClimbCommand;
-import frc.robot.commands.ExtendHatchBeakCommand;
-import frc.robot.commands.ExtendHatchCommand;
-import frc.robot.commands.RetractClimbCommand;
-import frc.robot.commands.RetractHatchBeakCommand;
-import frc.robot.commands.RetractHatchCommand;
-import frc.robot.commands.TurnTurretCommand;
-import frc.robot.subsystems.CargoSubsystem;
-import frc.robot.subsystems.ClimbSubsystem;
-import frc.robot.subsystems.DrivetrainSubsystem;
-import frc.robot.subsystems.HatchBeakSubsystem;
-import frc.robot.subsystems.HatchSubsystem;
-import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.JoystickF310.*;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RobotContainer {
@@ -27,8 +14,8 @@ public class RobotContainer {
     private final HatchBeakSubsystem m_hatchBeak = new HatchBeakSubsystem();
     private final CargoSubsystem m_cargo = new CargoSubsystem();
     private final TurretSubsystem m_turret = new TurretSubsystem();
-    private final ClimbSubsystem m_climbFront = new ClimbSubsystem();
-    private final ClimbSubsystem m_climbRear = new ClimbSubsystem();
+    private final ClimbSubsystem m_climbFront = new ClimbSubsystem(Constants.PORT_PCM_CLIMB_FRONT);
+    private final ClimbSubsystem m_climbRear = new ClimbSubsystem(Constants.PORT_PCM_CLIMB_REAR);
     private final DrivetrainSubsystem m_drivetrain = new DrivetrainSubsystem();
 
 
