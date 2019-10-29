@@ -27,8 +27,9 @@ public class RobotContainer {
     private final RetractHatchBeakCommand m_retractHatchBeakCommand = new RetractHatchBeakCommand(m_hatchBeak);
 
     //TODO Add cargo commands
+    private final TeleopCargoTurnCommand m_teleopCargoTurnCommand = new TeleopCargoTurnCommand(m_cargo);
 
-    private final TeleopTurretTurnCommand m_turnTurret = new TeleopTurretTurnCommand(m_turret);
+    private final TeleopTurretTurnCommand m_teleopTurretTurnCommand = new TeleopTurretTurnCommand(m_turret);
 
     private final ExtendClimbCommand m_extendClimbFrontCommand = new ExtendClimbCommand(m_climbFront);
     private final RetractClimbCommand m_retractClimbFrontCommand = new RetractClimbCommand(m_climbRear);
@@ -52,7 +53,9 @@ public class RobotContainer {
         joystickOperator.getButton(POVF310.Top).whenPressed(m_extendHatchBeakCommand);
         joystickOperator.getButton(POVF310.Right).whenPressed(m_retractHatchBeakCommand);
 
-        //TODO Add turret command bindings
+        m_teleopCargoTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickRightY));
+
+        m_teleopTurretTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickLeftX));
 
         joystickOperator.getButton(POVF310.TopLeft).whenPressed(m_extendClimbFrontCommand);
         joystickOperator.getButton(POVF310.TopRight).whenPressed(m_extendClimbRearCommand);

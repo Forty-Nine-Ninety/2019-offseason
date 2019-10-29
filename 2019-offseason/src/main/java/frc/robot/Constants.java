@@ -28,5 +28,9 @@ public final class Constants {
     public static double TURRET_KI = 0;
     public static double TURRET_KD = 5.62;
 
+    public static double CARGO_KP = 0.642;
+    public static double CARGO_KI = 0;
+    public static double CARGO_KD = 5.62;
+
     public static double ENCODER_RESOLUTION = 4096;
 }

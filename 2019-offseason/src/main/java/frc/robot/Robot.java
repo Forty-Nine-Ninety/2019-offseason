@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
             Random r = new Random();
             while (s.hasNextLine()) splashes.add(s.nextLine());
             System.out.println("\n\n" + splashes.get(r.nextInt(splashes.size())) + "\n\n");
+            s.close();
         } catch (FileNotFoundException e) {
             System.out.println("Couldn't find splash messages :(");
         }

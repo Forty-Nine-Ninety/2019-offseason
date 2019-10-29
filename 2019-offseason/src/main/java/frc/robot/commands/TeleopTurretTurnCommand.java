@@ -16,7 +16,7 @@ public class TeleopTurretTurnCommand extends CommandBase {
         addRequirements(turret);
     }
 
-    public void setSuppliers(DoubleSupplier speed) {
+    public void setSupplier(DoubleSupplier speed) {
         m_speedSupplier = speed;
     }
 
