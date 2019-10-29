@@ -28,7 +28,7 @@ public class RobotContainer {
 
     //TODO Add cargo commands
 
-    private final TurnTurretCommand m_turnTurret = new TurnTurretCommand(m_turret);
+    private final TeleopTurretTurnCommand m_turnTurret = new TeleopTurretTurnCommand(m_turret);
 
     private final ExtendClimbCommand m_extendClimbFrontCommand = new ExtendClimbCommand(m_climbFront);
     private final RetractClimbCommand m_retractClimbFrontCommand = new RetractClimbCommand(m_climbRear);
@@ -36,6 +36,7 @@ public class RobotContainer {
     private final RetractClimbCommand m_retractClimbRearCommand = new RetractClimbCommand(m_climbRear);
 
     //TODO Add drivetrain commands
+    private final TeleopTankDriveCommand m_teleopTankDriveCommand = new TeleopTankDriveCommand(m_drivetrain);
     
 
 
@@ -60,6 +61,7 @@ public class RobotContainer {
         joystickOperator.getButton(POVF310.BottomRight).whenPressed(m_retractClimbRearCommand);
 
         //TODO add drivetrain command bindings (?)
+        m_teleopTankDriveCommand.setSuppliers(() -> joystickDrive.getRawAxis(AxisF310.JoystickLeftY), () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY));
     }
 
     public Command getAutonomousCommand() {

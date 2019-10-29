@@ -23,4 +23,10 @@ public final class Constants {
     public static double DRIVETRAIN_RIGHT_KD = 5.62;
 
     public static double DRIVETRAIN_TRACKWIDTH_METERS = 0.606425;
+
+    public static double TURRET_KP = 0.642;
+    public static double TURRET_KI = 0;
+    public static double TURRET_KD = 5.62;
+
+    public static double ENCODER_RESOLUTION = 4096;
 }

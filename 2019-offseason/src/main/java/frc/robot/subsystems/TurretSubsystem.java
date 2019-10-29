@@ -1,11 +1,37 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.WPI_TalonSRX;
 
 public class TurretSubsystem extends SubsystemBase {
 
-    public TurretSubsystem() {}
+    private final WPI_TalonSRX m_talon;
+
+    private final PIDController m_PID;
+
+    private double m_targetSpeed;
+
+    public TurretSubsystem() {
+        m_talon = new WPI_TalonSRX();
+
+        m_PID = new PIDController(Constants.TURRET_KP, Constants.TURRET_KI, Constants.TURRET_KD);
+
+        m_targetSpeed = 0;
+    }
+
+    public void setSpeed(double speed) {
+        m_targetSpeed = speed;
+    }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+        m_talon.set(m_PID.calculate(getRate(), m_targetSpeed));
+    }
+
+    //TODO get actual rates
+    private double getRate() {
+        return -1;
+    }
 }
