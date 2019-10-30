@@ -36,16 +36,24 @@ public class TurretSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         if (! isZeroed) zero();
-        m_talon.set(m_PID.calculate(getRate(), m_targetSpeed));
+
+        //Make sure turret doesn't turn too much
+        if (getPosition() < Constants.DEGREES_TURRET_MIN && m_targetSpeed < 0) m_talon.set(0);
+        else if (getPosition() > Constants.DEGREES_TURRET_MAX && m_targetSpeed > 0) m_talon.set(0);
+        else m_talon.set(m_PID.calculate(getRate(), m_targetSpeed));
     }
 
     private void zero() {
-        m_talon.setSelectedSensorPosition(0, 0, Constants.TALON_TIMEOUT_MS);
+        if ((! m_sensor1.get()) || (! m_sensor2.get())) return;
+        m_talon.setSelectedSensorPosition((int)Math.round(Constants.DEGREES_TURRET_SAFE_POINT * Constants.DEGREES_TO_TURRET_ENCODER), 0, Constants.TALON_TIMEOUT_MS);
         isZeroed = true;
     }
 
-    //TODO get actual rates
     private double getRate() {
         return m_talon.getSelectedSensorVelocity();
+    }
+
+    public double getPosition() {
+        return (double)m_talon.getSelectedSensorPosition() / Constants.DEGREES_TO_TURRET_ENCODER;
     }
 }

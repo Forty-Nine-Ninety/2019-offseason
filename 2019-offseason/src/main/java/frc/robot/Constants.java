@@ -37,11 +37,20 @@ public final class Constants {
     public static double TURRET_KP = 0.642;
     public static double TURRET_KI = 0;
     public static double TURRET_KD = 5.62;
-
+    
+    public static double TURRET_SETPOINT_KP = 0.642;
+    public static double TURRET_SETPOINT_KI = 0;
+    public static double TURRET_SETPOINT_KD = 5.62;
+    
     public static double CARGO_KP = 0.642;
     public static double CARGO_KI = 0;
     public static double CARGO_KD = 5.62;
 
     public static double ENCODER_RESOLUTION = 4096;
     public static int TALON_TIMEOUT_MS = 5;
+    public static double TURRET_UNITS_PER_REVOLUTION = 26000;
+    public static double DEGREES_TO_TURRET_ENCODER = TURRET_UNITS_PER_REVOLUTION / 360;
+    public static double DEGREES_TURRET_SAFE_POINT = -45;
+    public static double DEGREES_TURRET_MIN = -95;
+    public static double DEGREES_TURRET_MAX = -45;
 }

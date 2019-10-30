@@ -20,7 +20,6 @@ public class RobotContainer {
     private final ClimbSubsystem m_climbRear = new ClimbSubsystem(Side.Rear);
     private final DrivetrainSubsystem m_drivetrain = new DrivetrainSubsystem();
 
-
     private final ExtendHatchCommand m_extendHatchCommand = new ExtendHatchCommand(m_hatch);
     private final RetractHatchCommand m_retractHatchCommand = new RetractHatchCommand(m_hatch);
     
@@ -31,6 +30,10 @@ public class RobotContainer {
     private final TeleopCargoTurnCommand m_teleopCargoTurnCommand = new TeleopCargoTurnCommand(m_cargo);
 
     private final TeleopTurretTurnCommand m_teleopTurretTurnCommand = new TeleopTurretTurnCommand(m_turret);
+    private final SetpointTurretTurnCommand m_setpointTurretTurnCommandA = new SetpointTurretTurnCommand(m_turret, 180);
+    private final SetpointTurretTurnCommand m_setpointTurretTurnCommandB = new SetpointTurretTurnCommand(m_turret, 90);
+    private final SetpointTurretTurnCommand m_setpointTurretTurnCommandX = new SetpointTurretTurnCommand(m_turret, -90);
+    private final SetpointTurretTurnCommand m_setpointTurretTurnCommandY = new SetpointTurretTurnCommand(m_turret, 0);
 
     private final ExtendClimbCommand m_extendClimbFrontCommand = new ExtendClimbCommand(m_climbFront);
     private final RetractClimbCommand m_retractClimbFrontCommand = new RetractClimbCommand(m_climbRear);
@@ -56,7 +59,6 @@ public class RobotContainer {
         joystickOperator.getButton(POVF310.Right).whenPressed(m_retractHatchBeakCommand);
 
         m_teleopCargoTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickRightY));
-
         m_teleopTurretTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickLeftX));
 
         joystickOperator.getButton(POVF310.TopLeft).whenPressed(m_extendClimbFrontCommand);
