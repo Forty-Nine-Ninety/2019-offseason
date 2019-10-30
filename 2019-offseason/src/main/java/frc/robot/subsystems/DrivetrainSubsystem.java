@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.controller.PIDController;
@@ -11,7 +12,6 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.AHRS;
 import frc.robot.Constants;
-import frc.robot.WPI_TalonSRX;
 
 //See https://docs.wpilib.org/en/latest/docs/software/commandbased/pid-subsystems-commands.html
 //And perhaps https://github.com/wpilibsuite/allwpilib/blob/master/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gyrodrivecommands/commands/TurnToAngle.java
@@ -45,10 +45,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
 
     public DrivetrainSubsystem() {
-        m_leftFront = new WPI_TalonSRX();
-        m_leftRear = new WPI_TalonSRX();
-        m_rightFront = new WPI_TalonSRX();
-        m_rightRear = new WPI_TalonSRX();
+        m_leftFront = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_LEFT_FRONT_TALONSRX);
+        m_leftRear = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_LEFT_REAR_TALONSRX);
+        m_rightFront = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_RIGHT_FRONT_TALONSRX);
+        m_rightRear = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_RIGHT_REAR_TALONSRX);
 
         m_gyro = new AHRS(SPI.Port.kMXP);
 

@@ -70,4 +70,8 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         return null;
     }
+
+    public Command[] getTeleopCommands() {
+        return new Command[] { m_teleopCargoTurnCommand, m_teleopTankDriveCommand, m_teleopTurretTurnCommand };
+    }
 }

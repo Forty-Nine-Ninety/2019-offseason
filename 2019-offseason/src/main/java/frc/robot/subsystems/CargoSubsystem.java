@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class CargoSubsystem extends SubsystemBase {
 
@@ -14,7 +14,7 @@ public class CargoSubsystem extends SubsystemBase {
     private double m_targetSpeed;
 
     public CargoSubsystem() {
-        m_talon = new WPI_TalonSRX();
+        m_talon = new WPI_TalonSRX(Constants.CAN_CARGO_TALONSRX);
 
         m_PID = new PIDController(Constants.CARGO_KP, Constants.CARGO_KI, Constants.CARGO_KD);
 

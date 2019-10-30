@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.WPI_TalonSRX;
 
 public class TurretSubsystem extends SubsystemBase {
 
@@ -14,7 +14,7 @@ public class TurretSubsystem extends SubsystemBase {
     private double m_targetSpeed;
 
     public TurretSubsystem() {
-        m_talon = new WPI_TalonSRX();
+        m_talon = new WPI_TalonSRX(Constants.CAN_TURRET_TALONSRX);
 
         m_PID = new PIDController(Constants.TURRET_KP, Constants.TURRET_KI, Constants.TURRET_KD);
 
