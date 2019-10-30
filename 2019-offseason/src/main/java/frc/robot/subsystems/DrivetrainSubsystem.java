@@ -28,7 +28,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private final WPI_TalonSRX m_rightFront;
     private final WPI_TalonSRX m_rightRear;
 
-    private final AHRS m_gyro;
+    //private final AHRS m_gyro;
 
     private final SpeedControllerGroup m_motorGroupLeft;
     private final SpeedControllerGroup m_motorGroupRight;
@@ -50,7 +50,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         m_rightFront = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_RIGHT_FRONT_TALONSRX);
         m_rightRear = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_RIGHT_REAR_TALONSRX);
 
-        m_gyro = new AHRS(SPI.Port.kMXP);
+        //m_gyro = new AHRS(SPI.Port.kMXP);
 
         m_motorGroupLeft = new SpeedControllerGroup(m_leftFront, m_leftRear);
         m_motorGroupRight = new SpeedControllerGroup(m_rightFront, m_rightRear);
@@ -74,7 +74,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         m_drive.tankDrive(m_leftPID.calculate(getRateLeft(), m_targetSpeeds.leftMetersPerSecond), m_rightPID.calculate(getRateRight(), m_targetSpeeds.rightMetersPerSecond), true);
 
         //Update odometry
-        m_odometry.update(Rotation2d.fromDegrees(m_gyro.getAngle()), new DifferentialDriveWheelSpeeds(getRateLeft(), getRateRight()));
+        //m_odometry.update(Rotation2d.fromDegrees(m_gyro.getAngle()), new DifferentialDriveWheelSpeeds(getRateLeft(), getRateRight()));
     }
 
     public void setSpeeds(DifferentialDriveWheelSpeeds speeds) {
