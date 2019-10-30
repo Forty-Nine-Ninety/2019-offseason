@@ -16,6 +16,10 @@ public final class Constants {
     public static int PORT_PCM_CLIMB_REAR = 1;
     public static int PORT_PCM_CLIMB_FRONT = 2;
     public static int PORT_PCM_HATCH_BEAK = 3;
+
+
+    public static int PORT_SENSOR_TURRET_1 = 0;
+    public static int PORT_SENSOR_TURRET_2 = 1;
     
 
     //Tune drivetrain PID, these values are from frc-characterization toolsuite, but that only outputs 1 set of numbers instead of 2
@@ -39,4 +43,5 @@ public final class Constants {
     public static double CARGO_KD = 5.62;
 
     public static double ENCODER_RESOLUTION = 4096;
+    public static int TALON_TIMEOUT_MS = 5;
 }

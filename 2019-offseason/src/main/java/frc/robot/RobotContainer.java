@@ -5,6 +5,7 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.ClimbSubsystem.Side;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class RobotContainer {
 
@@ -43,6 +44,7 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureButtonBindings();
+        configureDefaultCommands();
     }
 
     private void configureButtonBindings() {
@@ -67,11 +69,13 @@ public class RobotContainer {
         m_teleopTankDriveCommand.setSuppliers(() -> joystickDrive.getRawAxis(AxisF310.JoystickLeftY), () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY));
     }
 
-    public Command getAutonomousCommand() {
-        return null;
+    private void configureDefaultCommands() {
+        CommandScheduler.getInstance().setDefaultCommand(m_drivetrain, m_teleopTankDriveCommand);
+        CommandScheduler.getInstance().setDefaultCommand(m_cargo, m_teleopCargoTurnCommand);
+        CommandScheduler.getInstance().setDefaultCommand(m_turret, m_teleopTurretTurnCommand);
     }
 
-    public Command[] getTeleopCommands() {
-        return new Command[] { m_teleopCargoTurnCommand, m_teleopTankDriveCommand, m_teleopTurretTurnCommand };
+    public Command getAutonomousCommand() {
+        return null;
     }
 }
