@@ -61,6 +61,11 @@ public class RobotContainer {
         m_teleopCargoTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickRightY));
         m_teleopTurretTurnCommand.setSupplier(() -> joystickOperator.getRawAxis(AxisF310.JoystickLeftX));
 
+        joystickOperator.getButton(ButtonF310.A).whenPressed(m_setpointTurretTurnCommandA);
+        joystickOperator.getButton(ButtonF310.B).whenPressed(m_setpointTurretTurnCommandB);
+        joystickOperator.getButton(ButtonF310.X).whenPressed(m_setpointTurretTurnCommandX);
+        joystickOperator.getButton(ButtonF310.Y).whenPressed(m_setpointTurretTurnCommandY);
+
         joystickOperator.getButton(POVF310.TopLeft).whenPressed(m_extendClimbFrontCommand);
         joystickOperator.getButton(POVF310.TopRight).whenPressed(m_extendClimbRearCommand);
 
