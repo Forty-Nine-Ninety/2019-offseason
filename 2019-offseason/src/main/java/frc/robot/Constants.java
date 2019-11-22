@@ -7,6 +7,7 @@ public final class Constants {
     public static int CAN_PCM = 12;
     public static int CAN_CARGO_TALONSRX = 36;
     public static int CAN_TURRET_TALONSRX = 35;
+    public static int CAN_ELEVATOR_TALONSRX = -1;//need to get port value
     public static int CAN_DRIVETRAIN_LEFT_REAR_TALONSRX = 32;
     public static int CAN_DRIVETRAIN_LEFT_FRONT_TALONSRX = 31;
     public static int CAN_DRIVETRAIN_RIGHT_REAR_TALONSRX = 34;
@@ -56,9 +57,15 @@ public final class Constants {
     
     public static double ELEVATOR_UNITS_PER_REVOLUTION = -1;//idk yet
     public static double DEGREES_TO_ELEVATOR_ENCODER = ELEVATOR_UNITS_PER_REVOLUTION / 360;
-    public static double DEGREES_ELEVATOR_SAFE_POINT = -1;//oof don't know it
     public static double DEGREES_ELEVATOR_MIN = -1;//wow mech should really finish building
     public static double DEGREES_ELEVATOR_MAX = -1;//so we can actually get these values
+    
+    public static double ELEVATOR_KP = 0.1;
+    public static double ELEVATOR_KI = 0;
+    public static double ELEVATOR_KD = 0;
 
+    public static double ELEVATOR_SETPOINT_KP = 0.1;
+    public static double ELEVATOR_SETPOINT_KI = 0;
+    public static double ELEVATOR_SETPOINT_KD = 0;
 
 }
