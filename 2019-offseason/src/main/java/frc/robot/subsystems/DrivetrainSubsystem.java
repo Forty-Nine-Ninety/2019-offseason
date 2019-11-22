@@ -32,6 +32,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     private final SpeedControllerGroup m_motorGroupLeft;
     private final SpeedControllerGroup m_motorGroupRight;
+    private double SpeedMultiplier;
 
     private final DifferentialDrive m_drive;
 
@@ -71,7 +72,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        m_drive.tankDrive(m_leftPID.calculate(getRateLeft(), m_targetSpeeds.leftMetersPerSecond), m_rightPID.calculate(getRateRight(), m_targetSpeeds.rightMetersPerSecond), true);
+        m_drive.tankDrive(m_leftPID.calculate(getRateLeft(), m_targetSpeeds.leftMetersPerSecond) * Math.sqrt(this.SpeedMultiplier), m_rightPID.calculate(getRateRight(), m_targetSpeeds.rightMetersPerSecond) * Math.sqrt(this.SpeedMultiplier), true);
 
         //Update odometry
         //m_odometry.update(Rotation2d.fromDegrees(m_gyro.getAngle()), new DifferentialDriveWheelSpeeds(getRateLeft(), getRateRight()));
@@ -88,5 +89,16 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     private double getRateRight() {
         return -1;
+    }
+
+    /**
+     * @return the speedMultiplier
+     */
+    public double getSpeedMultiplier() {
+        return this.SpeedMultiplier;
+    }
+
+    public void setSpeedMultiplier(double val){
+        this.SpeedMultiplier = val;
     }
 }
