@@ -53,4 +53,12 @@ public final class Constants {
     public static double DEGREES_TURRET_SAFE_POINT = -45;
     public static double DEGREES_TURRET_MIN = -95;
     public static double DEGREES_TURRET_MAX = -45;
+    
+    public static double ELEVATOR_UNITS_PER_REVOLUTION = -1;//idk yet
+    public static double DEGREES_TO_ELEVATOR_ENCODER = ELEVATOR_UNITS_PER_REVOLUTION / 360;
+    public static double DEGREES_ELEVATOR_SAFE_POINT = -1;//oof don't know it
+    public static double DEGREES_ELEVATOR_MIN = -1;//wow mech should really finish building
+    public static double DEGREES_ELEVATOR_MAX = -1;//so we can actually get these values
+
+
 }
