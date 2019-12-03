@@ -16,7 +16,7 @@ public class SetpointElevatorCommand extends CommandBase{
         m_elevator = elevator;
         addRequirements(elevator);
 
-        m_PID = new PIDController(Constants.ELEVATOR_KP, Constants.ELEVATOR_KI, Constants.ELEVATOR_KD);
+        m_PID = new PIDController(Constants.ELEVATOR_SETPOINT_KP, Constants.ELEVATOR_SETPOINT_KI, Constants.ELEVATOR_SETPOINT_KD);
 
         m_setpoint = setpoint * Constants.DEGREES_TO_ELEVATOR_ENCODER;
     }
