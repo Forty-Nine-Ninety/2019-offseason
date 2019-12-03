@@ -21,7 +21,6 @@ public final class Constants {
 
     public static int PORT_SENSOR_TURRET_1 = 0;
     public static int PORT_SENSOR_TURRET_2 = 1;
-    
 
     //Tune drivetrain PID, these values are from frc-characterization toolsuite, but that only outputs 1 set of numbers instead of 2
     //Also these numbers were for the previous (now deprecated) PIDController class with a different period so I'll probably need to re-do that

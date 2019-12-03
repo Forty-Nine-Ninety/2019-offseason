@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class SetpointElevatorCommand extends CommandBase{
-    //TODO finish code
 
     private final ElevatorSubsystem m_elevator;
     private PIDController m_PID;
