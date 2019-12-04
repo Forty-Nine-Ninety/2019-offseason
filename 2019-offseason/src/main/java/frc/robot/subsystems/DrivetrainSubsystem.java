@@ -39,11 +39,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private final PIDController m_rightPID;
     
     private final DifferentialDriveKinematics m_kinematics;
-    private final DifferentialDriveOdometry m_odometry;
+    //private final DifferentialDriveOdometry m_odometry;
 
     private DifferentialDriveWheelSpeeds m_targetSpeeds;
 
-
+    
     public DrivetrainSubsystem() {
         m_leftFront = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_LEFT_FRONT_TALONSRX);
         m_leftRear = new WPI_TalonSRX(Constants.CAN_DRIVETRAIN_LEFT_REAR_TALONSRX);
@@ -61,7 +61,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         m_rightPID = new PIDController(Constants.DRIVETRAIN_RIGHT_KP, Constants.DRIVETRAIN_RIGHT_KI, Constants.DRIVETRAIN_RIGHT_KD);
 
         m_kinematics = new DifferentialDriveKinematics(Constants.DRIVETRAIN_TRACKWIDTH_METERS);
-        m_odometry = new DifferentialDriveOdometry(m_kinematics);
+        //m_odometry = new DifferentialDriveOdometry(m_kinematics, gyroAngle);
 
         m_targetSpeeds = new DifferentialDriveWheelSpeeds();
 
