@@ -83,10 +83,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
     
     //TODO get actual rates
     private double getRateLeft() {
-        return -1;
+        return m_leftFront.getSelectedSensorVelocity();
     }
 
     private double getRateRight() {
-        return -1;
+        return m_rightFront.getSelectedSensorVelocity();
     }
 }
