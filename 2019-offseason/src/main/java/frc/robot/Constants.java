@@ -24,15 +24,19 @@ public final class Constants {
 
     //Tune drivetrain PID, these values are from frc-characterization toolsuite, but that only outputs 1 set of numbers instead of 2
     //Also these numbers were for the previous (now deprecated) PIDController class with a different period so I'll probably need to re-do that
-    public static double DRIVETRAIN_LEFT_KP = 0.2;
-    public static double DRIVETRAIN_LEFT_KI = 0;
-    public static double DRIVETRAIN_LEFT_KD = 0;
+    public static double DRIVETRAIN_LEFT_KP = 0.1;
+    public static double DRIVETRAIN_LEFT_KI = 0.01;
+    public static double DRIVETRAIN_LEFT_KD = 0.01;
 
-    public static double DRIVETRAIN_RIGHT_KP = 0.2;
-    public static double DRIVETRAIN_RIGHT_KI = 0;
-    public static double DRIVETRAIN_RIGHT_KD = 0;
+    public static double DRIVETRAIN_RIGHT_KP = 0.1;
+    public static double DRIVETRAIN_RIGHT_KI = 0.01;
+    public static double DRIVETRAIN_RIGHT_KD = 0.01;
 
     public static double DRIVETRAIN_TRACKWIDTH_METERS = 0.606425;
+
+    public static double DRIVETRAIN_MINIMUM_SPEED_METERS_PER_SECOND = 0.1;
+    public static double DRIVETRAIN_ENCODER_VELOCITY_TO_METERS_PER_SECOND = 0.00010914;//1 rotation is 4096 encoder units, 10.71:1 gear ratio, 6 inch wheels
+    public static double DRIVETRAIN_MAXIMUM_SPEED_METERS_PER_SECOND = 8;
 
     public static double TURRET_KP = 0.1;
     public static double TURRET_KI = 0;

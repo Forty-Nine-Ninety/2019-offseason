@@ -59,7 +59,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
         m_leftPID = new PIDController(Constants.DRIVETRAIN_LEFT_KP, Constants.DRIVETRAIN_LEFT_KI, Constants.DRIVETRAIN_LEFT_KD);
         m_rightPID = new PIDController(Constants.DRIVETRAIN_RIGHT_KP, Constants.DRIVETRAIN_RIGHT_KI, Constants.DRIVETRAIN_RIGHT_KD);
-
         m_kinematics = new DifferentialDriveKinematics(Constants.DRIVETRAIN_TRACKWIDTH_METERS);
         //m_odometry = new DifferentialDriveOdometry(m_kinematics, gyroAngle);
 
@@ -67,26 +66,31 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
         //TODO Reset gyro
         //TODO Set encoder distanceperpulse (encoders are talons)
+        this.register();
     }
 
     @Override
     public void periodic() {
-        m_drive.tankDrive(m_leftPID.calculate(getRateLeft(), m_targetSpeeds.leftMetersPerSecond), m_rightPID.calculate(getRateRight(), m_targetSpeeds.rightMetersPerSecond), true);
-
+        System.out.println("current rate " + getRateLeft() + ", setpoint " + m_targetSpeeds.leftMetersPerSecond);
+        //m_drive.tankDrive(m_leftPID.calculate(getRateLeft(), m_targetSpeeds.leftMetersPerSecond), m_rightPID.calculate(getRateRight(), m_targetSpeeds.rightMetersPerSecond), true);
+        m_drive.tankDrive(0.4, 0.4, true);
         //Update odometry
         //m_odometry.update(Rotation2d.fromDegrees(m_gyro.getAngle()), new DifferentialDriveWheelSpeeds(getRateLeft(), getRateRight()));
     }
 
     public void setSpeeds(DifferentialDriveWheelSpeeds speeds) {
+        if (speeds.leftMetersPerSecond < Constants.DRIVETRAIN_MINIMUM_SPEED_METERS_PER_SECOND && speeds.leftMetersPerSecond > -1 * Constants.DRIVETRAIN_MINIMUM_SPEED_METERS_PER_SECOND) speeds.leftMetersPerSecond = 0;
+        if (speeds.rightMetersPerSecond < Constants.DRIVETRAIN_MINIMUM_SPEED_METERS_PER_SECOND && speeds.rightMetersPerSecond > -1 * Constants.DRIVETRAIN_MINIMUM_SPEED_METERS_PER_SECOND) speeds.rightMetersPerSecond = 0;
+        System.out.println(speeds.leftMetersPerSecond + " " + speeds.rightMetersPerSecond);
         m_targetSpeeds = speeds;
     }
     
     //TODO get actual rates
     private double getRateLeft() {
-        return m_leftFront.getSelectedSensorVelocity();
+        return m_leftFront.getSelectedSensorVelocity() * Constants.DRIVETRAIN_ENCODER_VELOCITY_TO_METERS_PER_SECOND;
     }
 
     private double getRateRight() {
-        return m_rightFront.getSelectedSensorVelocity();
+        return m_rightFront.getSelectedSensorVelocity() * Constants.DRIVETRAIN_ENCODER_VELOCITY_TO_METERS_PER_SECOND;
     }
 }
