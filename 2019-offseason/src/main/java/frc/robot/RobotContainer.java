@@ -73,7 +73,7 @@ public class RobotContainer {
         joystickOperator.getButton(POVF310.BottomRight).whenPressed(m_retractClimbRearCommand);
 
         //TODO add drivetrain command bindings (?)
-        m_teleopTankDriveCommand.setSuppliers(() -> joystickDrive.getRawAxis(AxisF310.JoystickLeftY), () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY));
+        m_teleopTankDriveCommand.setSuppliers(() -> joystickDrive.getRawAxis(AxisF310.JoystickLeftY) * Constants.DRIVETRAIN_MAXIMUM_SPEED_METERS_PER_SECOND, () -> joystickDrive.getRawAxis(AxisF310.JoystickRightY) * Constants.DRIVETRAIN_MAXIMUM_SPEED_METERS_PER_SECOND);
     }
 
     private void configureDefaultCommands() {
